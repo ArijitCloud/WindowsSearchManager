@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Windows Search Manager</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        .search-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1em;
+        }
+
+        #searchBox {
+            width: 70%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 16px;
+            margin-left: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background-color: #007ACC;
+            color: #fff;
+        }
+
+            button:hover {
+                background-color: #005EA2;
+            }
+
+        #results {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Windows Search Manager</h1>
+        <div class="search-row">
+            <input id="searchBox" placeholder="Type to search..." />
+            <button onclick="sendQuery()">Search</button>
+        </div>
+        <pre id="results"></pre>
+    </div>
+
+    <script>
+        function sendQuery() {
+            const query = document.getElementById('searchBox').value;
+            // Post the message to the WebView2 backend
+            window.chrome.webview.postMessage({ query });
+        }
+
+        // Listen for messages from the WebView2 backend
+        window.chrome.webview.addEventListener('message', event => {
+            // Display the JSON response in the <pre> block
+            document.getElementById('results').textContent = JSON.stringify(event.data, null, 2);
+        });
+    </script>
+</body>
+</html>

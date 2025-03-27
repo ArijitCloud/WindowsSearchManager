@@ -1,5 +1,7 @@
 .vs/
-WindowsSearchManager/Debug/
-WindowsSearchManager/packages/
-WindowsSearchManager/x64/
-WindowsSearchManager/WindowsS.dfba1137
+**/Debug/
+**/packages/
+**/x64/
+**/WindowsS.dfba1137
+**/bin
+**/obj
