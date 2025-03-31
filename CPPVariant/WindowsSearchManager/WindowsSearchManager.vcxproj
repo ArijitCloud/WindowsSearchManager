@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{dfba1137-d87f-4963-b032-4d325935bb1c}</ProjectGuid>
+    <ProjectGuid>{7997713d-815f-457d-ba26-28db8efd14b9}</ProjectGuid>
     <RootNamespace>WindowsSearchManager</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -103,7 +103,8 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>false</ConformanceMode>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -127,34 +128,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="SearchQueryBuilder.h" />
-    <ClInclude Include="SearchSelectorBuilder.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="WebViewHelper.h" />
-    <ClInclude Include="WindowsSearchManager.h" />
-    <ClInclude Include="WindowsSearchQueryManager.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="SearchQueryBuilder.cpp" />
-    <ClCompile Include="SearchSelectorBuilder.cpp" />
-    <ClCompile Include="WebViewHelper.cpp" />
-    <ClCompile Include="WindowsSearchManager.cpp" />
-    <ClCompile Include="WindowsSearchQueryManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="WindowsSearchManager.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="small.ico" />
-    <Image Include="WindowsSearchManager.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="index.html">
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
     </CopyFileToFolders>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="utils\SearchQueryBuilder.cpp" />
+    <ClCompile Include="utils\SearchSelectorBuilder.cpp" />
+    <ClCompile Include="utils\WindowsSearchQueryManager.cpp" />
+    <ClCompile Include="WindowsSearchManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utils\SearchQueryBuilder.h" />
+    <ClInclude Include="utils\SearchSelectorBuilder.h" />
+    <ClInclude Include="utils\WindowsSearchQueryManager.h" />
+    <ClInclude Include="WindowsSearchManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
