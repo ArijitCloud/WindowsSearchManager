@@ -152,7 +152,7 @@ int WINAPI WinMain(
 	// szTitle: the text that appears in the title bar
 	// WS_OVERLAPPEDWINDOW: the type of window to create
 	// CW_USEDEFAULT, CW_USEDEFAULT: initial position (x, y)
-	// 500, 100: initial size (width, length)
+	// 1024, 768: initial size (width, length)
 	// NULL: the parent of this window
 	// NULL: this application does not have a menu bar
 	// hInstance: the first parameter from WinMain
@@ -163,7 +163,7 @@ int WINAPI WinMain(
 		szTitle,
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT,
-		800, 600,
+		1024, 768,
 		NULL,
 		NULL,
 		hInstance,
@@ -243,8 +243,13 @@ int WINAPI WinMain(
 						// <Scripting>
 						// Step 5 - Scripting
 						// Schedule an async task to add initialization script that freezes the Object object
-						//webview->AddScriptToExecuteOnDocumentCreated(L"Object.freeze(Object);", nullptr);
-						// Schedule an async task to get the document URL
+						webview->AddScriptToExecuteOnDocumentCreated(L"Object.freeze(Object);", nullptr);
+					/*	webview->ExecuteScript(
+							L"document.documentElement.style.height='100%';"
+							L"document.body.style.height='100%';"
+							L"document.body.style.margin='0';",
+							nullptr);*/
+						 //Schedule an async task to get the document URL
 						//webview->ExecuteScript(L"window.document.URL;", Callback<ICoreWebView2ExecuteScriptCompletedHandler>(
 						//	[](HRESULT errorCode, LPCWSTR resultObjectAsJson) -> HRESULT {
 						//		LPCWSTR URL = resultObjectAsJson;
