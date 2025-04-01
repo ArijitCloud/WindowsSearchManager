@@ -68,7 +68,7 @@
     <div class="container">
         <h1>Windows Search Manager</h1>
         <div class="search-row">
-            <input id="searchBox" placeholder="Type to search..." />
+            <input id="searchBox" placeholder="Type to search..."  onkeydown="if(event.key === 'Enter') sendQuery();" />
             <button onclick="sendQuery()">Search</button>
         </div>
         <pre id="results"></pre>
